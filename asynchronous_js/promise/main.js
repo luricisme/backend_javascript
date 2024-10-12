@@ -5,7 +5,7 @@ let stocks = {
     toppings:["chocolate", "peanuts"]
 };
 
-let is_shop_open = false;
+let is_shop_open = true;
 
 let order = (time, work) => {
 
