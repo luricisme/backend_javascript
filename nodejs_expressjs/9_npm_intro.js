@@ -6,6 +6,9 @@
 
 // global dependency - use it in any project
 // npm install -g <packageName>
+
+// npm uninstall packageName
+
 // sudo npm install -g <packageName> (mac) 
 
 // package.json - manifest file (stores important info about project/package)
