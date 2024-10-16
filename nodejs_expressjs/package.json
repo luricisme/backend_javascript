@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "0_what.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon 9_npm_intro.js"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +12,8 @@
   "dependencies": {
     "bootstrap": "^5.3.3",
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }
