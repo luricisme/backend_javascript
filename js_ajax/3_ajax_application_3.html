@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AJAX Application 3</title>
+
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Click on a CD to display album information.</p>
+    <p id="showCD"></p>
+    <br />
+    <table id="demo"></table>
+
+    <script>
+      const xhttp = new XMLHttpRequest();
+      let cd;
+      xhttp.onload = function () {
+        const xmlDoc = xhttp.responseXML;
+        cd = xmlDoc.getElementsByTagName("CD");
+        loadCD();
+      };
+      xhttp.open("GET", "cd_catalog.xml");
+      xhttp.send();
+
+      function loadCD() {
+        let table = "<tr><th>Artist</th><th>Title</th></tr>";
+        for (let i = 0; i < cd.length; i++) {
+          table += "<tr onclick='displayCD(" + i + ")'><td>";
+          table +=
+            cd[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+          table += "</td><td>";
+          table +=
+            cd[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+          table += "</td></tr>";
+        }
+        document.getElementById("demo").innerHTML = table;
+      }
+
+      function displayCD(i) {
+        document.getElementById("showCD").innerHTML =
+          "Artist: " +
+          cd[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+          "<br>Title: " +
+          cd[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+          "<br>Year: " +
+          cd[i].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue;
+      }
+
+      function next() {
+        if (i < len - 1) {
+          i++;
+          displayCD(i);
+        }
+      }
+
+      function previous() {
+        if (i > 0) {
+          i--;
+          displayCD(i);
+        }
+      }
+    </script>
+  </body>
+</html>

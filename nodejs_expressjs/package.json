@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "0_what.js",
   "scripts": {
-    "dev": "nodemon 9_npm_intro.js"
+    "start": "nodemon 9_npm_intro.js"
   },
   "keywords": [],
   "author": "",

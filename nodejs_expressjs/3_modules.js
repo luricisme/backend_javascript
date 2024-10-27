@@ -11,4 +11,4 @@ console.log(data);
 
 sayHi('susan');
 sayHi(john);
-sayHi(peter);
+sayHi(peter);   
