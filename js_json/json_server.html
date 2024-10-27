@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON Server</title>
+  </head>
+  <body>
+    <h2>Fetch a JSON file with XMLHttpRequest</h2>
+    <p id="demo"></p>
+
+    <script>
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.onload = function(){
+            const myObj = JSON.parse(this.responseText);
+            document.getElementById("demo").innerHTML = myObj.name;
+        }
+        xmlhttp.open("GET", "json_demo.txt");
+        xmlhttp.send();
+    </script>
+  </body>
+</html>
