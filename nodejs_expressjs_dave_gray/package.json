@@ -1,0 +1,21 @@
+{
+  "name": "nodejs_expressjs_dave_gray",
+  "version": "1.0.0",
+  "main": "./4_build_web_with_nodejs/server.js",
+  "scripts": {
+    "start": "node ./4_build_web_with_nodejs/server.js",
+    "dev": "nodemon ./4_build_web_with_nodejs/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "data-fns": "^1.1.0",
+    "date-fns": "^4.1.0",
+    "uuid": "^11.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
