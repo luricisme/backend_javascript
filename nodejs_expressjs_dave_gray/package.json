@@ -1,18 +1,24 @@
 {
   "name": "nodejs_expressjs_dave_gray",
   "version": "1.0.0",
-  "main": "./4_build_web_with_nodejs/server.js",
+  "main": "./1_all_express/5_express_JWT/server.js",
   "scripts": {
-    "start": "node ./4_build_web_with_nodejs/server.js",
-    "dev": "nodemon ./4_build_web_with_nodejs/server.js",
+    "start": "node ./1_all_express/5_express_JWT/server.js",
+    "dev": "nodemon ./1_all_express/5_express_JWT/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Luric",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
     "data-fns": "^1.1.0",
     "date-fns": "^4.1.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
     "uuid": "^11.0.3"
   },
   "devDependencies": {

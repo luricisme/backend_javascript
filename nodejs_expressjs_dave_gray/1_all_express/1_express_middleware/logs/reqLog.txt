@@ -1,0 +1,16 @@
+20241204	23:14:14	0f750259-cb48-4a2b-a75e-03879b3df7e8	GET	undefined	/index
+20241204	23:14:14	e0caab49-b375-491c-8fee-2b80e87b31d8	GET	undefined	/css/style.css
+20241204	23:16:06	59623940-8ef1-4527-b530-3691a9ef3a42	GET	undefined	/index
+20241204	23:16:06	516bf1d5-e340-462a-bb23-49ddc7fcd925	GET	undefined	/css/style.css
+20241204	23:34:41	589dac8a-5406-4ad3-b373-8892dd90344d	GET	undefined	/index
+20241204	23:35:02	74177bfd-6adc-4537-ad99-97d9833c45e4	GET	undefined	/index
+20241204	23:35:25	9c922397-0bb5-4f85-b75e-62d1a934454b	GET	undefined	/index
+20241204	23:35:37	47c0d129-81b0-4952-8eee-b7a4ce68f62c	GET	undefined	/index
+20241204	23:37:08	003658b8-a59b-40e8-ae87-ab86e48b0f99	GET	undefined	/index
+20241204	23:37:08	bb0709ef-1fc5-4880-a502-aa9000529a2b	GET	undefined	/css/style.css
+20241205	00:33:52	d5a62b84-9b14-4f4e-aa1f-171f65c29774	GET	undefined	/indextxt
+20241205	00:33:52	c208a9ed-6a8c-4fe1-8577-ae7dee13dbc5	GET	undefined	/css/style.css
+20241205	00:33:55	32bd8721-7f53-45d9-bdf1-1c1bab429b2f	GET	undefined	/index.txt
+20241205	00:33:55	b4feb075-3f56-4514-9c15-5d1537480ad8	GET	undefined	/css/style.css
+20241205	00:34:16	010dd3e4-877b-4d7c-b68f-1aa6c526b7cc	GET	undefined	/hello.txt
+20241205	00:34:16	827187ad-bb2f-4d8b-b0c5-0b415f328048	GET	undefined	/css/style.css
