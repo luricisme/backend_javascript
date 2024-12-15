@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -8,26 +9,23 @@ const errorHandler = require('./middleware/errorHandler');
 const verifyJWT = require('./middleware/verifyJWT');
 const cookieParser = require('cookie-parser');
 const credentials = require('./middleware/credentials');
+const mongoose = require('mongoose');
+const connectDB = require('./config/dbConn');
 const PORT = process.env.PORT || 3500;
 
-app.use(logger) 
+// Connect to MongoDB
+connectDB();
 
-// Handle option credentials check - before CORS
-// and fetch cookies credentials requirement  
+// Middleware
+app.use(logger)
 app.use(credentials);
-
 app.use(cors(corsOptions));
-
-app.use(express.urlencoded({extended: false}));
-
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-// Middleware for cookies
 app.use(cookieParser());
-
 app.use(express.static(path.join(__dirname, '/public')));
 
-// routes
+// Routes
 app.use('/', require('./routes/root'));
 app.use('/register', require('./routes/register'));
 app.use('/auth', require('./routes/auth'));
@@ -39,21 +37,21 @@ app.use('/employees', require('./routes/api/employees'));
 
 app.all('*', (req, res) => {
     res.status(404);
-    if(req.accepts('html')){
+    if (req.accepts('html')) {
         res.sendFile(path.join(__dirname, 'views', '404.html'));
-    }else if(req.accepts('json')) {
-        res.json({error: "404 not found"});
-    }else {
+    } else if (req.accepts('json')) {
+        res.json({ error: "404 not found" });
+    } else {
         res.type(txt).send("404 not found");
     }
-    
+
 })
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
-
-
+mongoose.connection.once('open', () => {
+    console.log('Connect to MongoDB');
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    });
+})
