@@ -1,5 +1,4 @@
-const express = 
-require('express');
+const express = require('express');
 const router = express.Router();
 const employeesController = require('../../controllers/employeesController')
 const ROLES_LIST = require('../../config/roles_list');
