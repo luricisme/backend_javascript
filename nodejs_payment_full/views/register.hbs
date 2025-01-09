@@ -1,0 +1,73 @@
+<section class="vh-100 bg-dark">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                            <!-- Form gửi yêu cầu POST -->
+                            <form action="/register" method="POST">
+                                <!-- Username -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="username">Username</label>
+                                    <input type="text" id="username" name="username"
+                                        class="form-control form-control-lg" required />
+                                </div>
+
+                                <!-- Password -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input type="password" id="password" name="password"
+                                        class="form-control form-control-lg" required />
+                                </div>
+
+                                <!-- Name -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="name">Full Name</label>
+                                    <input type="text" id="name" name="name" class="form-control form-control-lg"
+                                        required />
+                                </div>
+
+                                <!-- Email -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="email">Email</label>
+                                    <input type="email" id="email" name="email" class="form-control form-control-lg"
+                                        required />
+                                </div>
+
+                                <!-- Date of Birth -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="dob">Date of Birth</label>
+                                    <input type="date" id="dob" name="dob" class="form-control form-control-lg"
+                                        required />
+                                </div>
+
+                                <!-- Permission -->
+                                <div data-mdb-input-init class="form-outline mb-4">
+                                    <label class="form-label" for="permission">Permission Level</label>
+                                    <select id="permission" name="permission" class="form-control form-control-lg"
+                                        required>
+                                        <option value="1">User</option>
+                                        <option value="2">Admin</option>
+                                    </select>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit"
+                                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                </div>
+
+                                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/login"
+                                        class="fw-bold text-body"><u>Login here</u></a></p>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,140 @@
+{{> navbar}}
+
+<style>
+    /* Màu pastel cho tin nhắn */
+    .bg-pastel-blue {
+        background-color: #cce7ff;
+        /* Màu xanh pastel */
+    }
+
+    .bg-pastel-pink {
+        background-color: #ffe6e6;
+        /* Màu hồng pastel */
+    }
+
+    /* Căn chỉnh và khoảng cách cho tin nhắn */
+    .my-message,
+    .other-message {
+        max-width: 60%;
+        margin-bottom: 15px;
+        /* Khoảng cách giữa các tin nhắn */
+        padding: 10px 15px;
+        /* Đệm bên trong */
+        word-wrap: break-word;
+        /* Ngắt dòng nếu quá dài */
+    }
+
+    /* Căn chỉnh khung tin nhắn */
+    .my-message {
+        align-self: flex-end;
+        /* Căn lề phải */
+    }
+
+    .other-message {
+        align-self: flex-start;
+        /* Căn lề trái */
+    }
+
+    /* Vùng hiển thị tin nhắn */
+    #messages {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+        /* Khoảng cách chung giữa các tin nhắn */
+    }
+</style>
+
+{{!-- Chat window --}}
+<div class="container-fluid d-flex" style="height: calc(100vh - 56px);">
+    <div class="col-md-8 d-flex flex-column border-end">
+        <div class="bg-light p-3">
+            <h5 class="mb-0">Chat with <span id="selectedUser"></span></h5>
+            <div class="text-muted small mt-2">
+                <div id="currentUser" data-username="{{currentUser.Username}}">{{currentUser.Username}}</div>
+            </div>
+        </div>
+        <div id="chatWindow" style="display:none;">
+            <div id="messages" class="bg-light p-3" style="height: calc(100vh - 200px); overflow-y: scroll;">
+                <!-- Tin nhắn sẽ hiển thị tại đây -->
+            </div>
+            <div class="input-group">
+                <input type="text" id="messageInput" class="form-control" placeholder="Type a message...">
+                <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    {{!-- Column online user --}}
+    <div class="col-md-4 bg-light d-flex flex-column">
+        <div class="p-3 border-bottom">
+            <h5 class="mb-0">Online Users</h5>
+        </div>
+        <ul class="list-group list-group-flush flex-grow-1 overflow-auto" id="onlineUsers">
+        </ul>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js"
+    integrity="sha512-8ExARjWWkIllMlNzVg7JKq9RKWPlJABQUNq6YvAjE/HobctjH/NA+bSiDMDvouBVjp4Wwnf1VP1OEv7Zgjtuxw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    const currentUserDiv = document.getElementById('currentUser');
+    const username = currentUserDiv.dataset.username;
+    const socket = io('http://localhost:3000', {
+        auth: {
+            username: username
+        }
+    });
+
+    socket.on('online users', (users) => {
+        const onlineUsersElement = document.getElementById('onlineUsers');
+        onlineUsersElement.innerHTML = ''; 
+        for (const username in users) {
+            const userElement = document.createElement('li');
+            userElement.classList.add('list-group-item');
+            userElement.textContent = username;
+            userElement.style.cursor = 'pointer';
+            userElement.onclick = () => startChat(username);
+            onlineUsersElement.appendChild(userElement);
+        }
+    });
+
+    let selectedUser = '';
+    function startChat(user) {
+        selectedUser = user;
+        document.getElementById('chatWindow').style.display = 'block';
+        document.getElementById('messages').innerHTML = '';
+        document.getElementById('selectedUser').textContent = user;
+    }
+
+    function sendMessage() {
+        const messageInput = document.getElementById('messageInput');
+        const message = messageInput.value;
+        if (message && selectedUser) {
+            socket.emit('private message', {
+                to: selectedUser,
+                message: message
+            });
+            addMessage(username, message);
+            messageInput.value = '';
+        }
+    }
+
+    function addMessage(sender, message) {
+        const messagesElement = document.getElementById('messages');
+        const messageElement = document.createElement('div');
+        if (sender === username) {
+            messageElement.className = 'my-message text-end text-dark bg-pastel-blue p-3 rounded ms-auto';
+        } else {
+            messageElement.className = 'other-message text-start text-dark bg-pastel-pink p-3 rounded me-auto';
+        }
+        messageElement.textContent = `${sender}: ${message}`;
+        messagesElement.appendChild(messageElement);
+    }
+
+    socket.on('private message', (data) => {
+        addMessage(data.from, data.message);
+    });
+
+</script>

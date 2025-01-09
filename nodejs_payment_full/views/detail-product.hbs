@@ -1,0 +1,33 @@
+{{> navbar}}
+
+<div class="container my-5">
+  <h2 class="mb-4">Product Details</h2>
+
+  {{#if product}}
+    <div class="row">
+      <!-- Product Image -->
+      <div class="col-md-4">
+        <img src="/{{product.ProImage}}" class="img-fluid rounded" alt="{{product.ProName}}">
+      </div>
+
+      <!-- Product Info -->
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">{{product.ProName}}</h3>
+            <p class="card-text">
+              <strong>Price:</strong> ${{product.Price}} <br>
+              <strong>Quantity Available:</strong> {{product.Quantity}} <br>
+              <strong>Category ID:</strong> {{product.CatID}} <br>
+              <strong>Short Description:</strong> {{product.TinyDes}} <br>
+              <strong>Full Description:</strong> <br> 
+              <p>{{product.FullDes}}</p>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <p>Product not found.</p>
+  {{/if}}
+</div>
