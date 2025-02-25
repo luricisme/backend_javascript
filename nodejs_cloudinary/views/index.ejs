@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            color: black;
+            text-align: center;
+        }
+
+        .container{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>FILE UPLOAD</h1>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <input type="submit" value="upload">
+    </form>
+
+    <div class="container">
+        <%if(url) {%>
+            <h1>FILE UPLOAD TO CLOUDINARY SUCCESSFULLY</h1>
+            <img src="<%=url %>" alt="" style="width: 600px; height: 400px; margin: 20px">
+        <%} %>
+    </div>
+</body>
+
+</html>
